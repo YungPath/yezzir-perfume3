@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yezzir Marketplace</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("HqMt9o6fQRy4Ibt8h"); // Replace with your Public Key
+    })();
+  </script>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #fff; color: #000; }
+    header { background-color: #000; color: #fff; padding: 15px; text-align: center; }
+    header h1 { margin: 0; color: gold; }
+    nav { background: #111; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { color: gold; }
+    .hero { background: linear-gradient(to right, black, gold); color: white; padding: 60px 20px; text-align: center; }
+    .hero h2 { font-size: 2rem; margin-bottom: 10px; }
+    .categories, .products { padding: 40px 20px; text-align: center; }
+    .categories h3, .products h3 { color: black; margin-bottom: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); background: white; }
+    .card img { width: 100%; height: 250px; object-fit: cover; }
+    .card h4 { margin: 10px 0; color: black; }
+    .card p { color: #333; margin: 0 0 10px; }
+    .card button { background: gold; border: none; padding: 10px; width: 100%; cursor: pointer; font-weight: bold; }
+    .card button:hover { background: black; color: white; }
+    footer { background: #000; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+    footer a { color: gold; margin: 0 10px; text-decoration: none; }
+    .order-form { display: none; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; margin: 20px auto; max-width: 400px; border-radius: 8px; }
+    .order-form h3 { margin-top: 0; }
+    .order-form input, .order-form button { width: 100%; padding: 10px; margin: 10px 0; }
+    .order-form button { background: gold; border: none; cursor: pointer; font-weight: bold; }
+    .order-form button:hover { background: black; color: white; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Yezzir Marketplace</h1>
+    <p>Perfumes • Clothes • Skincare • Food Delivery</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#products">Shop</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Shop with Confidence</h2>
+    <p>Pay with MonCash or Cash on Delivery</p>
+    <button onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
+  </section>
+
+  <section class="categories" id="categories">
+    <h3>Shop by Category</h3>
+    <div class="grid">
+      <div class="card"><h4>Perfumes</h4></div>
+      <div class="card"><h4>Clothes</h4></div>
+      <div class="card"><h4>Skincare</h4></div>
+      <div class="card"><h4>Food Delivery</h4></div>
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <h3>Featured Products</h3>
+    <div class="grid">
+      <div class="card">
+        <img src="herconfession.jpg" alt="Her Confession">
+        <h4>Her Confession</h4>
+        <p>$45</p>
+        <button onclick="openOrderForm('Her Confession')">Order</button>
+      </div>
+      <div class="card">
+        <img src="lavieestbelle.jpg" alt="La Vie Est Belle">
+        <h4>La Vie Est Belle</h4>
+        <p>$55</p>
+        <button onclick="openOrderForm('La Vie Est Belle')">Order</button>
+      </div>
+      <div class="card">
+        <img src="eclaire.jpg" alt="Éclaire">
+        <h4>Éclaire</h4>
+        <p>$50</p>
+        <button onclick="openOrderForm('Éclaire')">Order</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="order-form" id="orderForm">
+    <h3>Complete Your Order</h3>
+    <form id="checkoutForm">
+      <input type="hidden" id="productName" name="product">
+      <input type="text" id="customerName" name="name" placeholder="Your Name" required>
+      <input type="text" id="customerPhone" name="phone" placeholder="Your Phone" required>
+      <input type="text" id="customerAddress" name="address" placeholder="Your Address" required>
+      <button type="submit">Confirm Order</button>
+    </form>
+  </div>
+
+  <section id="about" style="padding:40px 20px;">
+    <h3>About Us</h3>
+    <p>Yezzir Marketplace connects Haitians to trusted sellers with fast delivery and easy payments via MonCash or Cash on Delivery.</p>
+  </section>
+
+  <section id="contact" style="padding:40px 20px;">
+    <h3>Contact Us</h3>
+    <p>WhatsApp: <a href="https://wa.me/50912345678">+509 12 34 56 78</a></p>
+    <p>Email: contact@yezzirmarketplace.com</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Yezzir Marketplace</p>
+    <a href="#">Instagram</a> | 
+    <a href="#">Facebook</a> | 
+    <a href="#">TikTok</a>
+  </footer>
+
+  <script>
+    function openOrderForm(productName) {
+      document.getElementById("orderForm").style.display = "block";
+      document.getElementById("productName").value = productName;
+      document.getElementById("orderForm").scrollIntoView();
+    }
+
+    document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const orderDetails = {
+        product: document.getElementById("productName").value,
+        name: document.getElementById("customerName").value,
+        phone: document.getElementById("customerPhone").value,
+        address: document.getElementById("customerAddress").value
+      };
+
+      emailjs.send("service_86wyt9t", "template_mksiuse", orderDetails)
+        .then(function(response) {
+          alert("✅ Order placed successfully! We will contact you soon.");
+          document.getElementById("checkoutForm").reset();
+          document.getElementById("orderForm").style.display = "none";
+        }, function(error) {
+          alert("❌ Order failed. Please try again.");
+          console.log(error);
+        });
+    });
+  </script>
+
+</body>
+</html>
